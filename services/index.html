@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>Default Services - zend-mvc-i18n</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/zf.css" rel="stylesheet">
+    <link href="../css/prism-zf.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <span class="navbar-brand">
+              <a href="http://framework.zend.com"><img src="../img/zf-logo-mark.png" height="28" alt="Zend Framework" /></a>
+              <a href="..">zend-mvc-i18n</a>
+            </span>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../intro/">Intro</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../routing/">Routing</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Default Services</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Migration <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../migration/v2-to-v3/">Version 2 to Version 3</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="prev" href="../routing/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../migration/v2-to-v3/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://github.com/zendframework/zend-mvc-i18n">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <!-- content:begin -->
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#services-defined">Services Defined</a></li>
+        
+            <li><a href="#translator">Translator</a></li>
+        
+            <li><a href="#dummytranslator">DummyTranslator</a></li>
+        
+            <li><a href="#mvctranslator-and-translatorfactory">MvcTranslator and TranslatorFactory</a></li>
+        
+            <li><a href="#httprouterdelegatorfactory">HttpRouterDelegatorFactory</a></li>
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
+  <li><a href="..">Docs</a> &raquo;</li>
+  
+    
+      
+        <li>Reference &raquo;</li>
+      
+    
+  
+  <li class="active">Default Services</li>
+</ol>
+
+<nav class="hidden-lg">
+  <ul class="pager">
+    <li class="previous">
+      <a rel="prev" href="../routing/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../migration/v2-to-v3/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>
+
+<h1 id="services-defined">Services Defined</h1>
+<p>zend-mvc-i18n defines the following services and related factories.</p>
+<h2 id="translator">Translator</h2>
+<p><code>Zend\Mvc\I18n\Translator</code> implements each of
+<code>Zend\I18n\Translator\TranslatorInterface</code> (from
+zend-i18n) and implements <code>Zend\Validator\TranslatorInterface</code> (from
+zend-validator), by decorating an <code>Zend\I18n\Translator\TranslatorInterface</code>
+instance (typically a <code>Zend\I18n\Translator\Translator</code> instance).</p>
+<p>It exists to allow bridging multiple translation interfaces, allowing it to be
+used in multiple contexts.</p>
+<h2 id="dummytranslator">DummyTranslator</h2>
+<p><code>Zend\Mvc\I18n\DummyTranslator</code> is an implementation of
+<code>Zend\I18n\Translator\TranslatorInterface</code> that essentially returns the
+arguments provided to it unchanged.</p>
+<p>As an example, calling:</p>
+<pre class="codehilite"><code class="language-php">$translator-&gt;translate($message);</code></pre>
+
+
+<p>will return <code>$message</code>, and </p>
+<pre class="codehilite"><code class="language-php">$translator-&gt;translatePlural($singular, $plural, $number);</code></pre>
+
+
+<p>will return <code>$singular</code> when <code>$number</code> is <code>1</code>, and <code>$plural</code> otherwise.</p>
+<h2 id="mvctranslator-and-translatorfactory">MvcTranslator and TranslatorFactory</h2>
+<p>The component defines the <code>MvcTranslator</code> service, which is aliased to the
+<code>Zend\Mvc\I18n\Translator</code> class, and uses <code>Zend\Mvc\I18n\TranslatorFactory</code> to
+create and return the instance.</p>
+<p>The point of the service is to ensure that a <code>Zend\Mvc\I18n\Translator</code> instance
+is returned, which enables usage across multiple contexts (see the <a href="#translator">Translator
+section</a>, above).</p>
+<p>As such, you should typically use the <code>MvcTranslator</code> service when injecting
+your own classes with a translator instance:</p>
+<pre class="codehilite"><code class="language-php">function ($container) {
+    return new YourServiceClass($container-&gt;get('MvcTranslator'));
+}</code></pre>
+
+
+<p>The <code>TranslatorFactory</code> will do the following:</p>
+<ul>
+<li>If a <code>Zend\I18n\Translator\TranslatorInterface</code> service is registered, it will
+  be retrieved and decorated with a <code>Zend\Mvc\I18n\Translator</code> instance.</li>
+<li>If the "config" service is defined in the container, has a "translator" key,
+  but the value of that key is boolean false, it returns a
+  <code>Zend\Mvc\I18n\Translator</code> instance wrapping a <code>DummyTranslator</code> instance.</li>
+<li>If the "config" service is defined in the container, has a "translator" key,
+  and value is an array or <code>Traversable</code> set of configuration, it passes that to
+  <code>Zend\I18n\Translator\Translator::factory()</code> to create and return an instance.
+  That instance is then decorated with a <code>Zend\Mvc\I18n\Translator</code>.</li>
+</ul>
+<h2 id="httprouterdelegatorfactory">HttpRouterDelegatorFactory</h2>
+<p>The component registers a delegator factory on each of the <code>HttpRouter</code> and
+<code>Zend\Router\Http\TreeRouteStack</code> services. The delegator factory checks to see
+if the instance created is a <code>Zend\Mvc\I18n\Router\TranslatorAwareTreeRouteStack</code>,
+and, if so:</p>
+<ul>
+<li>if the <code>MvcTranslator</code> service is present, it will inject it as the translator
+  before returning it.</li>
+<li>if the <code>Zend\I18n\Translator\TranslatorInterface</code> service is present, it will
+  inject it as the translator before returning it.</li>
+<li>otherwise, it disables translation in the returned instance.</li>
+</ul>
+
+<hr />
+
+<nav>
+  <ul class="pager">
+    <li class="previous">
+      <a rel="prev" href="../routing/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../migration/v2-to-v3/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav></div>
+        
+    </div>
+    <!-- content:end -->
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a><br></small>
+        </p>
+        <p><small><a href="http://framework.zend.com">Learn more about Zend Framework</a></small></p>
+    </footer>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/prism-zf.js"></script>
+
+    <script>var base_url = '..';</script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+</html>
