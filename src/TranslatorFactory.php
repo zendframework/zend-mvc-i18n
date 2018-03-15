@@ -11,7 +11,6 @@ use Interop\Container\ContainerInterface;
 use Traversable;
 use Zend\I18n\Translator\Translator as I18nTranslator;
 use Zend\I18n\Translator\TranslatorInterface;
-use Zend\Mvc\I18n\DummyTranslator;
 use Zend\Mvc\I18n\Translator as MvcTranslator;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
@@ -34,7 +33,14 @@ class TranslatorFactory implements FactoryInterface
         // Assume that if a user has registered a service for the
         // TranslatorInterface, it must be valid
         if ($container->has(TranslatorInterface::class)) {
-            return new MvcTranslator($container->get(TranslatorInterface::class));
+            $i18nTranslator = $container->get(TranslatorInterface::class);
+
+            // Inject plugins, if present and the translator supports it
+            if (($i18nTranslator instanceof I18nTranslator) && $container->has('TranslatorPluginManager')) {
+                $i18nTranslator->setPluginManager($container->get('TranslatorPluginManager'));
+            }
+
+            return new MvcTranslator($i18nTranslator);
         }
 
         return $this->marshalTranslator($container);

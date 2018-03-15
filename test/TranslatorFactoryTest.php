@@ -33,6 +33,43 @@ class TranslatorFactoryTest extends TestCase
         $translator = $this->prophesize(TranslatorInterface::class)->reveal();
         $this->container->has(TranslatorInterface::class)->willReturn(true);
         $this->container->get(TranslatorInterface::class)->willReturn($translator);
+        $this->container->has('TranslatorPluginManager')->willReturn(false);
+
+        $factory = new TranslatorFactory();
+        $test = $factory($this->container->reveal(), TranslatorInterface::class);
+
+        $this->assertInstanceOf(MvcTranslator::class, $test);
+        $this->assertSame($translator, $test->getTranslator());
+    }
+
+    public function testFactoryReturnsMvcTranslatorDecoratingTranslatorInterfaceServiceWhenPresentWithPluginManager()
+    {
+        $loaders = $this->prophesize(LoaderPluginManager::class)->reveal();
+
+        $translatorProphecy = $this->prophesize(I18nTranslator::class);
+        $translatorProphecy->setPluginManager($loaders)->shouldBeCalled();
+
+        $translator = $translatorProphecy->reveal();
+
+        $this->container->has(TranslatorInterface::class)->willReturn(true);
+        $this->container->get(TranslatorInterface::class)->willReturn($translator);
+
+        $this->container->has('TranslatorPluginManager')->willReturn(true);
+        $this->container->get('TranslatorPluginManager')->willReturn($loaders);
+
+        $factory = new TranslatorFactory();
+        $test = $factory($this->container->reveal(), TranslatorInterface::class);
+
+        $this->assertInstanceOf(MvcTranslator::class, $test);
+        $this->assertSame($translator, $test->getTranslator());
+    }
+
+    public function testFactoryReturnsMvcTranslatorDecoratingTranslatorInterfaceServiceWhenPresentWithPluginManagerButInvalidTranslatorClass()
+    {
+        $translator = $this->prophesize(TranslatorInterface::class)->reveal();
+        $this->container->has(TranslatorInterface::class)->willReturn(true);
+        $this->container->get(TranslatorInterface::class)->willReturn($translator);
+        $this->container->has('TranslatorPluginManager')->willReturn(true);
 
         $factory = new TranslatorFactory();
         $test = $factory($this->container->reveal(), TranslatorInterface::class);
