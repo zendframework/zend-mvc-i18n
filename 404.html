@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zend\Mvc\I18n">  
-    <link rel="shortcut icon" href="../img/favicon.ico">
+    <link rel="shortcut icon" href="//img/favicon.ico">
 
-    <title>Intro - zend-mvc-i18n - Zend Framework Docs</title>
+    <title>zend-mvc-i18n - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-f3b53f5ceb.css">
+    <link rel="stylesheet" href="//css/styles-f3b53f5ceb.css">
 </head>
 <body id="page-top">
 
@@ -31,7 +31,7 @@
             
             <span class="navbar-brand">
                 <a class="logo-link" href="https://framework.zend.com/" data-tooltip data-placement="bottom" title="Go to the ZF homepage">
-                    <img src="../img/zend-framework-logo.svg" height="28" alt="Zend Framework">
+                    <img src="//img/zend-framework-logo.svg" height="28" alt="Zend Framework">
                 </a>
             </span>
         </div>
@@ -66,7 +66,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-mvc-i18n</a>
+            <a href="/.">zend-mvc-i18n</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,13 +75,13 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-mvc-i18n</a>
+                        <a href="/." class="subnavigation__link">zend-mvc-i18n</a>
                     </li>
                 
             
                 
-                    <li class="subnavigation__list-item subnavigation__list-item--active">
-                        <a href="./" class="subnavigation__link">Intro</a>
+                    <li class="subnavigation__list-item ">
+                        <a href="/intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
@@ -92,13 +92,13 @@
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../routing/" class="subnavigation__link">Routing</a>
+        <a href="/routing/" class="subnavigation__link">Routing</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../services/" class="subnavigation__link">Default Services</a>
+        <a href="/services/" class="subnavigation__link">Default Services</a>
     </li>
 
                             
@@ -113,7 +113,7 @@
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../migration/v2-to-v3/" class="subnavigation__link">Version 2 to Version 3</a>
+        <a href="/migration/v2-to-v3/" class="subnavigation__link">Version 2 to Version 3</a>
     </li>
 
                             
@@ -190,141 +190,18 @@
             <div class="col-md-9 col-xs-12 content" role="main">
             <!-- content:begin -->
                 
-                    <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-    <li><a href="https://framework.zend.com/">Home</a></li>
 
-    
-        <li><a href="https://docs.zendframework.com/">Documentation</a></li>
-
-        
-            <li><a href="..">zend-mvc-i18n</a></li>
-
-            
-
-            <li class="active">Intro</li>
-        
-    
-</ol>
-
-
-    
-
-    
-    
-
-    
-    
-        <div class="toc">
-            <h6 class="toc__headline">In This Article</h6>
-            <ul class="toc__list">
-                
-                    <li class="toc__entry">
-                        <a href="#installation" class="toc__link">Installation</a>
-                    </li>
-                
-                    <li class="toc__entry">
-                        <a href="#migration" class="toc__link">Migration</a>
-                    </li>
-                
-            </ul>
-        </div>
-    
-
-
-    <h1 id="introduction">Introduction</h1>
-<p>Zend Framework 2 offered functionality for integrating internationalization
-capabilities provided by <a href="https://docs.zendframework.com/zend-i18n/">zend-i18n</a>
-into MVC applications. This support includes:</p>
-<ul>
-<li>registration of an <code>MvcTranslator</code> service by default.</li>
-<li>a <code>DummyTranslator</code>, for use when <code>ext/intl</code> is unavailable, or configuration
-  dictates that translations are disabled.</li>
-<li>an <code>MvcTranslator</code>, which implements both <code>Zend\I18n\Translator\TranslatorInterface</code>
-  and <code>Zend\Validator\TranslatorInterface</code>, which decorates a
-  <code>Zend\I18n\Translator\TranslatorInterface</code> instance.</li>
-<li>a <code>TranslatorAwareTreeRouteStack</code>, for enabling internationalized routing
-  segments.</li>
-</ul>
-<p>Since this functionality is entirely opt-in, we have decided that for version 3
-of zend-mvc, we will offer it as a standalone package, to install when required
-for your applications.</p>
-<p>Additionally, because it bridges multiple <code>TranslatorInterface</code> implementations,
-and provides i18n-capable routing, it can be useful with non-zend-mvc
-applications such as <a href="https://docs.zendframework.com/zend-expressive">zend-expressive</a>.</p>
-<h2 id="installation">Installation</h2>
-<p>Basic installation is via composer:</p>
-<pre class="codehilite"><code class="language-bash">$ composer require zendframework/zend-mvc-i18n</code></pre>
-
-<p>Assuming you are using the <a href="https://docs.zendframework.com/zend-component-installer">component installer</a>,
-doing so will automatically enable the component in your application.</p>
-<p>If you are not using the component installer, you will need to add the entry:</p>
-<pre class="codehilite"><code class="language-php">'Zend\Mvc\I18n'</code></pre>
-
-<p>to your list of active modules. This is usually provided in one of the following
-files:</p>
-<ul>
-<li><code>config/application.config.php</code> (vanilla ZF skeleton application)</li>
-<li><code>config/modules.config.php</code> (Apigility application)</li>
-</ul>
+<h1 class="content__title">404</h1>
 <blockquote>
-<h3 id="manually-enabling-with-zend-expressive">Manually enabling with zend-expressive</h3>
-<p>If you are not using the component-installer with zend-expressive, you will
-need to add the entry:</p>
-<pre class="codehilite"><code class="language-php">\Zend\Mvc\I18n\ConfigProvider::class</code></pre>
-
-<p>to your <code>config/config.php</code> class, assuming you are already using
-<a href="https://github.com/mtymek/expressive-config-manager">expressive-config-manager</a>.</p>
-<p>If you are not, add a new global <code>config/autoload/</code> file with the following contents:</p>
-<pre class="codehilite"><code class="language-php">&lt;?php
-use Zend\Mvc\I18n\ConfigProvider;
-
-$provider = new ConfigProvider();
-return $provider();</code></pre>
-
+    <h3>Something went wrong!</h3>
+    <p>
+        We're sorry, but the page you are looking for does not exist.
+    </p>
 </blockquote>
-<h2 id="migration">Migration</h2>
-<p>In order to separate the i18n integration features from zend-mvc, we made a few
-minor changes. While most of these are under-the-hood implementation details,
-please read the <a href="../migration/v2-to-v3/">migration guide</a> to verify your
-application will continue to work.</p>
+
+<a href="/" class="btn btn-default" role="button">Go to homepage</a>
 
 
-
-    <nav>
-    <ul class="page-nav hidden-print">
-
-        
-        <li class="page-nav__item">
-            
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="..">
-                    <i class="fa fa-chevron-left"></i> Previous
-                </a>
-            
-        </li>
-
-        
-        <li class="page-nav__item">
-            
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../routing/">
-                    Next <i class="fa fa-chevron-right"></i>
-                </a>
-            
-        </li>
-    </ul>
-</nav>
-
-
-
-    <div class="help-wanted">
-        <p>
-            Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-mvc-i18n/edit/master/docs/book/intro.md" target="_blank" class="help-wanted__link">
-                Edit this page on GitHub!
-            </a>
-        </p>
-    </div>
-
-                
             <!-- content:end -->
             </div>
             <div class="col-md-3 col-xs-12 sidebar">
@@ -340,7 +217,7 @@ application will continue to work.</p>
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-mvc-i18n</a>
+            <a href="/.">zend-mvc-i18n</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -349,13 +226,13 @@ application will continue to work.</p>
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-mvc-i18n</a>
+                        <a href="/." class="subnavigation__link">zend-mvc-i18n</a>
                     </li>
                 
             
                 
-                    <li class="subnavigation__list-item subnavigation__list-item--active">
-                        <a href="./" class="subnavigation__link">Intro</a>
+                    <li class="subnavigation__list-item ">
+                        <a href="/intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
@@ -366,13 +243,13 @@ application will continue to work.</p>
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../routing/" class="subnavigation__link">Routing</a>
+        <a href="/routing/" class="subnavigation__link">Routing</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../services/" class="subnavigation__link">Default Services</a>
+        <a href="/services/" class="subnavigation__link">Default Services</a>
     </li>
 
                             
@@ -387,7 +264,7 @@ application will continue to work.</p>
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../migration/v2-to-v3/" class="subnavigation__link">Version 2 to Version 3</a>
+        <a href="/migration/v2-to-v3/" class="subnavigation__link">Version 2 to Version 3</a>
     </li>
 
                             
@@ -466,11 +343,11 @@ application will continue to work.</p>
 </footer>
 
     <script>
-        var base_url = '..',
+        var base_url = '/',
             siteName = 'zend-mvc-i18n';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="//js/scripts-8d7ae56abf.js"></script>
+        <script src="/search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
