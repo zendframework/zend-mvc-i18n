@@ -287,15 +287,14 @@ router. Additionally, you may want to indicate the translation locale and/or
 text domain to use for translatable route segments.</p>
 <p>The following is a configuration example that could be specified in a module or
 at the application level:</p>
-<pre class="codehilite"><code class="language-php">use Zend\Mvc\I18n\Router\TranslatorAwareTreeRouteStack;
+<p> <pre class=codehilite><code class=language-php>use Zend\Mvc\I18n\Router\TranslatorAwareTreeRouteStack;
 
 return [
     'router' =&gt; [
         'router_class'           =&gt; TranslatorAwareTreeRouteStack::class,
         'translator_text_domain' =&gt; 'routing',
     ],
-];</code></pre>
-
+];</code></pre></p>
 <p>The above would configure and return a <code>TranslatorAwareTreeRouteStack</code> instance
 when the router is requested. The instance would be configured to use the
 <code>routing</code> text domain, and injected with either the <code>MvcTranslator</code> or
@@ -311,14 +310,12 @@ placeholders are denoted by <code>:name</code> notation within the definition.</
 <p>When matching, the translator uses its locale and the text domain configured to
 translate translation keys in the route definition prior to attempting a match.</p>
 <p>As an example, consider the following route definition:</p>
-<pre class="codehilite"><code>/{shopping_cart}/{products}/:productId</code></pre>
-
+<p> <pre class=codehilite><code>/{shopping_cart}/{products}/:productId</code></pre></p>
 <p>The above defines two translatable segments, <code>shopping_cart</code> and <code>products</code>.
 When attempting to match, these keys are passed to the translator. If, for
 example, the locale evaluates to <code>de-DE</code>, these might become <code>einkaufswagen</code> and
 'produkte`, respectively, evaluating to:</p>
-<pre class="codehilite"><code>/einkaufswagen/produkte/:productId</code></pre>
-
+<p> <pre class=codehilite><code>/einkaufswagen/produkte/:productId</code></pre></p>
 <p>This will then be what the router attempts to match against.</p>
 
 
@@ -353,7 +350,7 @@ example, the locale evaluates to <code>de-DE</code>, these might become <code>ei
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-mvc-i18n/edit/master/docs/routing.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-mvc-i18n/edit/master/docs/book/routing.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>
