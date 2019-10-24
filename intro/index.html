@@ -296,17 +296,19 @@ files:</p>
 <h3>Manually enabling with zend-expressive</h3>
 <p>If you are not using the component-installer with zend-expressive, you will
 need to add the entry:</p>
-<p><code>php
-\Zend\Mvc\I18n\ConfigProvider::class</code></p>
+<p><pre class=codehilite><code class=language-php>
+\Zend\Mvc\I18n\ConfigProvider::class
+</code></pre></p>
 <p>to your <code>config/config.php</code> class, assuming you are already using
 <a href="https://docs.zendframework.com/zend-config-aggregator/">zend-config-aggregator</a>.</p>
 <p>If you are not, add a new global <code>config/autoload/</code> file with the following contents:</p>
-<p>```php
+<p><pre class=codehilite><code class=language-php>
 &lt;?php
-use Zend\Mvc\I18n\ConfigProvider;</p>
-<p>$provider = new ConfigProvider();
+use Zend\Mvc\I18n\ConfigProvider;
+
+$provider = new ConfigProvider();
 return $provider();
-```</p>
+</code></pre></p>
 </blockquote>
 <h2 id="migration">Migration</h2>
 <p>In order to separate the i18n integration features from zend-mvc, we made a few
