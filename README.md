@@ -2,7 +2,7 @@
 
 > ## Repository abandoned 2019-12-31
 >
-> This repository has moved to laminas/laminas-mvc-i18n.
+> This repository has moved to [laminas/laminas-mvc-i18n](https://github.com/laminas/laminas-mvc-i18n).
 
 [![Build Status](https://secure.travis-ci.org/zendframework/zend-mvc-i18n.svg?branch=master)](https://secure.travis-ci.org/zendframework/zend-mvc-i18n)
 [![Coverage Status](https://coveralls.io/repos/github/zendframework/zend-mvc-i18n/badge.svg?branch=master)](https://coveralls.io/github/zendframework/zend-mvc-i18n?branch=master)
