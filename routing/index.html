@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Integration between zend-mvc and zend-i18n">  
-    <link rel="canonical" href="https://docs.zendframework.com/zend-mvc-i18n/routing/">
+    <link rel="canonical" href="https://docs.zendframework.com/routing/">
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>Routing - zend-mvc-i18n - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-5cfabd53ee.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body id="page-top">
 
@@ -198,9 +198,9 @@
     <div class="laminas-announcement">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
-            </div>
+            <div class="col-xs-12"><strong>
+                This package has moved. Visit its replacement, <a href="https://docs.laminas.dev/laminas-mvc-i18n/">laminas/laminas-mvc-i18n.</a>
+            </strong></div>
         </div>
     </div>
 </div>
@@ -258,10 +258,6 @@
                         <a href="#enabling-translatorawaretreeroutestack" class="toc__link">Enabling TranslatorAwareTreeRouteStack</a>
                     </li>
                 
-                    <li class="toc__entry">
-                        <a href="#translatable-route-segments" class="toc__link">Translatable route segments</a>
-                    </li>
-                
             </ul>
         </div>
     
@@ -287,35 +283,50 @@ router. Additionally, you may want to indicate the translation locale and/or
 text domain to use for translatable route segments.</p>
 <p>The following is a configuration example that could be specified in a module or
 at the application level:</p>
-<p> <pre class=codehilite><code class=language-php>use Zend\Mvc\I18n\Router\TranslatorAwareTreeRouteStack;
+<pre><code class="language-php">use Zend\Mvc\I18n\Router\TranslatorAwareTreeRouteStack;
 
 return [
     'router' =&gt; [
         'router_class'           =&gt; TranslatorAwareTreeRouteStack::class,
         'translator_text_domain' =&gt; 'routing',
     ],
-];</code></pre></p>
-<p>The above would configure and return a <code>TranslatorAwareTreeRouteStack</code> instance
+];
+```
+
+The above would configure and return a `TranslatorAwareTreeRouteStack` instance
 when the router is requested. The instance would be configured to use the
-<code>routing</code> text domain, and injected with either the <code>MvcTranslator</code> or
-<code>Zend\I18n\Translator\TranslatorInterface</code> service (whichever is present, with
-the former having precedence).</p>
-<p>The <code>translator_text_domain</code>, when not present, defaults to <code>default</code>.</p>
-<h2 id="translatable-route-segments">Translatable route segments</h2>
-<p>As a refresher, <a href="https://docs.zendframework.com/zend-router/routing/#zend92router92http92segment">segment routes</a>
+`routing` text domain, and injected with either the `MvcTranslator` or
+`Zend\I18n\Translator\TranslatorInterface` service (whichever is present, with
+the former having precedence).
+
+The `translator_text_domain`, when not present, defaults to `default`.
+
+## Translatable route segments
+
+As a refresher, [segment routes](https://docs.zendframework.com/zend-router/routing/#zend92router92http92segment)
 allow you to define a combination of literal characters and placeholders;
-placeholders are denoted by <code>:name</code> notation within the definition.</p>
-<p>To create a translatable segment, you use an alternate notation,
-<code>{translation-key}</code>.</p>
-<p>When matching, the translator uses its locale and the text domain configured to
-translate translation keys in the route definition prior to attempting a match.</p>
-<p>As an example, consider the following route definition:</p>
-<p> <pre class=codehilite><code>/{shopping_cart}/{products}/:productId</code></pre></p>
-<p>The above defines two translatable segments, <code>shopping_cart</code> and <code>products</code>.
+placeholders are denoted by `:name` notation within the definition.
+
+To create a translatable segment, you use an alternate notation,
+`{translation-key}`.
+
+When matching, the translator uses its locale and the text domain configured to
+translate translation keys in the route definition prior to attempting a match.
+
+As an example, consider the following route definition:
+</code></pre>
+
+<p>/{shopping_cart}/{products}/:productId</p>
+<pre><code>
+The above defines two translatable segments, `shopping_cart` and `products`.
 When attempting to match, these keys are passed to the translator. If, for
-example, the locale evaluates to <code>de-DE</code>, these might become <code>einkaufswagen</code> and
-'produkte`, respectively, evaluating to:</p>
-<p> <pre class=codehilite><code>/einkaufswagen/produkte/:productId</code></pre></p>
+example, the locale evaluates to `de-DE`, these might become `einkaufswagen` and
+'produkte`, respectively, evaluating to:
+
+</code></pre>
+
+<p>/einkaufswagen/produkte/:productId
+```</p>
 <p>This will then be what the router attempts to match against.</p>
 
 
@@ -481,7 +492,7 @@ example, the locale evaluates to <code>de-DE</code>, these might become <code>ei
             
             <div class="col-md-9">
                 <h4 class="footer__headline">Copyright</h4>
-                <p>&copy; 2006-2019 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2020 by <a href="https://www.zend.com/">Zend</a> by <a href="https://www.perforce.com/">Perforce</a>.</p>
             </div>
 
             
@@ -489,10 +500,10 @@ example, the locale evaluates to <code>de-DE</code>, these might become <code>ei
                 <h4 class="footer__headline">Support</h4>
                 <ul class="support__list">
                     <li class="support__list-item">
-                        <a href="https://discourse.zendframework.com" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://zendframework-slack.herokuapp.com" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
+                        <a href="https://laminas.dev/chat/" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
                     </li>
                     <li class="support__list-item">
                         <a href="https://github.com/zendframework" class="support__link" title="Github"><i class="fa fa-github"></i></a>
@@ -500,27 +511,28 @@ example, the locale evaluates to <code>de-DE</code>, these might become <code>ei
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
-                    <li class="support__list-item">
-                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
 
+<nav class="cookie-bar navbar navbar-fixed-bottom navbar-default hidden">
+    <div class="container">
+        <p class="navbar-text">
+            We use cookies to allow you to dismiss dialogs such as the Laminas
+            Project notification.
+        </p>
+        <button type="button" class="cookie-button btn btn-default navbar-btn">Allow Cookies</button>
+    </div>
+</nav>
+
     <script>
         var base_url = '..',
             siteName = 'zend-mvc-i18n';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
